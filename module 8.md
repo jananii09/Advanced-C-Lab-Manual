@@ -1,7 +1,7 @@
-EXP NO:6 C PROGRAM PRINT THE LOWERCASE ENGLISH WORD CORRESPONDING TO THE NUMBER
-Aim:
+# EXP NO:6 C PROGRAM PRINT THE LOWERCASE ENGLISH WORD CORRESPONDING TO THE NUMBER
+## Aim:
 To write a C program print the lowercase English word corresponding to the number
-Algorithm:
+## Algorithm:
 1.	Start
 - Initialize an integer variable n.
 2.	Input Validation
@@ -14,30 +14,78 @@ Algorithm:
 -	Default: Print "Greater than 13"
 4.	Exit the program.
  
-Program:
+## Program:
 
-//type your code here
+```
+#include<stdio.h>
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    if(n>=71 && n<=79)
+    {
+        switch(n)
+        {
+            case 71:
+            printf("seventy one");
+            break;
+            case 72:
+            printf("seventy two");
+            break;
+            case 73:
+            printf("seventy three");
+            break;
+            case 74:
+            printf("seventy four");
+            break;
+            case 75:
+            printf("seventy five");
+            break;
+            case 76:
+            printf("seventy six");
+            break;
+            case 77:
+            printf("seventy seven");
+            break;
+            case 78:
+            printf("seventy eight");
+            break;
+            case 79:
+            printf("seventy nine");
+            break;
+            
+            
+        }
+       
+    }
+     else
+        {
+            printf("Greater than 79");
+        }
+}
+```
 
 
 
 
-Output:
+## Output:
 
 
-//paste your output here
-
-
-
+<img width="470" height="272" alt="image" src="https://github.com/user-attachments/assets/79f1f0a3-c380-48df-863b-8689f3e5b524" />
 
 
 
-Result:
+
+
+
+
+## Result:
 Thus, the program is verified successfully
  
-EXP NO:7 C PROGRAM TO PRINT TEN SPACE-SEPARATED INTEGERS     IN A SINGLE  LINE DENOTING THE FREQUENCY OF EACH DIGIT FROM 0 TO 3 .
-Aim:
+# EXP NO:7 C PROGRAM TO PRINT TEN SPACE-SEPARATED INTEGERS     IN A SINGLE  LINE DENOTING THE FREQUENCY OF EACH DIGIT FROM 0 TO 3 .
+## Aim:
 To write a C program to print ten space-separated integers in a single line denoting the frequency of each digit from 0 to 3.
-Algorithm:
+## Algorithm:
 1.	Start
 2.	Declare char array a[50] outer loop for each digit from 0 to 3
 3.	Initialize counter c to 0
@@ -45,31 +93,48 @@ Algorithm:
 5.	Increment h to move to the next digit
 6.	End
  
-Program:
+## Program:
 
-//type your code here
+```
+#include<stdio.h>
+int main()
+{
+    char s[1000];
+    int freq[10]={0};
+    int i;
+    scanf("%s",s);
+    for(i=0;s[i]!=0;i++)
+    {
+        if(s[i]>='0' && s[i]<='9')
+        {
+            freq[s[i]-'0']++;
+        }
+        
+    }
+    for(i=0;i<10;i++)
+    {
+        printf("%d ",freq[i]);
+    }
+    
+}
+```
+
+## Output:
+
+
+<img width="570" height="234" alt="image" src="https://github.com/user-attachments/assets/93486e43-cd68-4a4c-b43b-982f59481fa5" />
 
 
 
 
-Output:
-
-
-//paste your output here
-
-
-
-
-
-
-Result:
+## Result:
 Thus, the program is verified successfully
 
-EXP NO:8 C PROGRAM TO PRINT ALL OF ITS PERMUTATIONS IN STRICT LEXICOGRAPHICAL ORDER.
-Aim:
+# EXP NO:8 C PROGRAM TO PRINT ALL OF ITS PERMUTATIONS IN STRICT LEXICOGRAPHICAL ORDER.
+## Aim:
 To write a C program to print all of its permutations in strict lexicographical order.
 
-Algorithm:
+## Algorithm:
 1.	Start
 2.	Declare variables s (pointer to an array of strings) and n (number of strings)
 
@@ -82,31 +147,80 @@ Read the number of strings n from the user Dynamically allocate memory for each 
 Free the memory allocated for each string in s Free the memory allocated for s
 7.	End
  
-Program:
+## Program:
 
-//type your code here
+```
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int next_per(int n, char **s)
+{
+for(int i = n - 1 ; i > 0 ; i--)
+if(strcmp(s[i],s[i-1]) > 0)
+{
+int j=i+1;
+for(;j<n;j++) 
+if (strcmp(s[j],s[i-1])<=0) 
+break; 
+char *t=s[i-1];
+s[i-1]=s[j-1];
+s[j-1]=t;
+for(;i<n-1;i++,n--)
+{
+t=s[i];
+s[i]=s[n-1];
+s[n-1]=t;
+}
+return 1;
+}
+for(int i=0;i<n-1;i++,n--)
+{
+char *t=s[i];
+s[i]=s[n-1];
+s[n-1]=t;
+}
+return 0;
+}
+int main()
+{
+char **s; int n;
+scanf("%d",&n); 
+s=calloc(n,sizeof(char*)); 
+for(int i=0;i<n;i++)
+{
+s[i]=calloc(n,sizeof(char*)*5);
+scanf("%s",s[i]);
+}
+do
+{
+for(int i=0;i<n;i++) 
+printf("%s%c",s[i],i==n-1?'\n':' ');
+}
+while(next_per(n,s));
+{
+for(int i=0;i<n;i++) 
+free (s[i]);
+free(s); 
+return 0;
+}
+}
+```
+## Output:
+
+
+<img width="517" height="467" alt="image" src="https://github.com/user-attachments/assets/ce73d24b-9eb6-4bbd-bf0f-e5e9aa7107c4" />
 
 
 
 
-Output:
-
-
-//paste your output here
-
-
-
-
-
-
-Result:
+## Result:
 Thus, the program is verified successfully
  
-EXP NO:9 C PROGRAM PRINT A PATTERN OF NUMBERS FROM 1 TO N AS
+# EXP NO:9 C PROGRAM PRINT A PATTERN OF NUMBERS FROM 1 TO N AS
 SHOWN BELOW.
-Aim:
+## Aim:
 To write a C program to print a pattern of numbers from 1 to n as shown below.
-Algorithm:
+## Algorithm:
 1.	Start
 2.	Declare integer variables n, i, j, min
 3.	Read the value of n from the user
@@ -115,33 +229,47 @@ Algorithm:
 6.	Calculate min as the minimum distance to the borders
 7.	End
  
-Program:
+## Program:
 
-//type your code here
+```
+#include<stdio.h>
+int main()
+{
+    int n,i,j;
+    scanf("%d",&n);
+    int len=n*2-1;
+    for(i=0;i<len;i++)
+    {
+        for(j=0;j<len;j++)
+        {
+            int min=i<j?i:j;
+            min=min<len-i?min:len-i-1;
+            min=min<len-j-1?min:len-j-1;
+            printf("%d ",n-min);
+        }
+        printf("\n");
+    }
+}
+```
+
+## Output:
+
+
+<img width="577" height="717" alt="image" src="https://github.com/user-attachments/assets/5da2fc82-c223-48ba-94d1-03888fa89e48" />
 
 
 
 
-Output:
-
-
-//paste your output here
-
-
-
-
-
-
-Result:
+## Result:
 Thus, the program is verified successfully
 
-EXP NO:10 C PROGRAM TO FIND A SQUARE  OF NUMBER USING FUNCTION WITHOUT ARGUMENTS WITH RETURN TYPE
+# EXP NO:10 C PROGRAM TO FIND A SQUARE  OF NUMBER USING FUNCTION WITHOUT ARGUMENTS WITH RETURN TYPE
 
-Aim:
+## Aim:
 
 To write a C program that calculates the square of a number using a function that does not take any arguments, but returns the square of the number.
 
-Algorithm:
+## Algorithm:
 
 1.	Start.
 2.	Define a function square() with no parameters. This function will return an integer value.
@@ -154,24 +282,33 @@ o	Return the squared value.
 o	Call the square() function and display the result.
 5.	End.
 
-Program:
+## Program:
 
-//type your code here
+```
+#include<stdio.h>
+void square();
+int main()
+{
+    square();
+    return 0;
+}
+void square()
+{
+    int a;
+    scanf("%d",&a);
+    float ans = a*a;
+    printf("The square of %d is : %.2f",a,ans);
+}
+```
+
+## Output:
+
+
+<img width="802" height="254" alt="image" src="https://github.com/user-attachments/assets/2879323d-ba2f-4b12-993a-88aea86b2dcb" />
 
 
 
-
-Output:
-
-
-//paste your output here
-
-
-
-
-
-
-Result:
+## Result:
 Thus, the program is verified successfully
 
 
